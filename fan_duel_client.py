@@ -1,6 +1,6 @@
 import requests
 
-from data.deserializers import ContestsDeserializer
+from data.deserializers import ContestsDeserializer, FixturesDeserializer
 from utilities.builders import UrlBuilder, HeadersBuilder
 
 
