@@ -18,7 +18,7 @@ class ContestsDeserializer:
 class ContestDeserializer:
     contest_id_field_name = 'id'
     max_entries_per_user_field_name = 'max_entries_per_user'
-    name_field_name  = 'name'
+    name_field_name = 'name'
     is_guaranteed_field_name = 'guaranteed'
     url_field_name = '_url'
     entry_fee_field_name = 'entry_fee'
