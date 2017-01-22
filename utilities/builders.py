@@ -4,6 +4,7 @@ class UrlBuilder:
 
     base_url = 'https://api.fanduel.com'
     contests_path = '/contests'
+    fixtures_path = '/fixture-lists'
 
     def __init__(self):
         pass
@@ -11,6 +12,10 @@ class UrlBuilder:
     @staticmethod
     def build_contest_url():
         return '{}{}'.format(UrlBuilder.base_url, UrlBuilder.contests_path)
+
+    @staticmethod
+    def build_fixtures_url():
+        return '{}{}'.format(UrlBuilder.base_url, UrlBuilder.fixtures_path)
 
 
 class HeadersBuilder:
