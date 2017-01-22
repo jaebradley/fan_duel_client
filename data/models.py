@@ -60,6 +60,7 @@ class Fixture:
 
         self.fixture_id = fixture_id
         self.url = url,
+        self.status = status
         self.start_time = start_time
         self.players_url = players_url
         self.sport = sport
