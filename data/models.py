@@ -68,36 +68,126 @@ class FixtureList:
 
 
 class Team(Enum):
-    atlanta_hawks = 679
-    boston_celtics = None
-    brooklyn_nets = 696
-    charlotte_hornets = 681
-    chicago_bulls = 682
-    cleveland_cavaliers = None
-    dallas_mavericks = 684
-    denver_nuggets = 685
-    detroit_pistons = None
-    golden_state_warriors = 687
-    houston_rockets = 688
-    indiana_pacers = 689
-    los_angeles_clippers = None
-    los_angeles_lakers = 691
-    memphis_grizzlies = 692
-    miami_heat = None
-    milwaukee_bucks = 694
-    minnesota_timberwolves = 695
-    new_orleans_pelicans = 697
-    new_york_knicks = None
-    oklahoma_city_thunder = None
-    orlando_magic = 700
-    philadelphia_76ers = 701
-    phoenix_suns = 702
-    portland_trail_blazers = 703
-    sacramento_kings = 704
-    san_antonio_spurs = None
-    toronto_raptors = 706
-    utah_jazz = 707
-    washington_wizards = None
+    atlanta_hawks = {
+        'sport': Sport.nba,
+        'id': 679
+    }
+    boston_celtics = {
+        'sport': Sport.nba,
+        'id': None
+    }
+    brooklyn_nets = {
+        'sport': Sport.nba,
+        'id': 696
+    }
+    charlotte_hornets = {
+        'sport': Sport.nba,
+        'id': 681
+    }
+    chicago_bulls = {
+        'sport': Sport.nba,
+        'id': 682
+    }
+    cleveland_cavaliers = {
+        'sport': Sport.nba,
+        'id': None
+    }
+    dallas_mavericks = {
+        'sport': Sport.nba,
+        'id': 684
+    }
+    denver_nuggets = {
+        'sport': Sport.nba,
+        'id': 685
+    }
+    detroit_pistons = {
+        'sport': Sport.nba,
+        'id': None
+    }
+    golden_state_warriors = {
+        'sport': Sport.nba,
+        'id': 687
+    }
+    houston_rockets = {
+        'sport': Sport.nba,
+        'id': 688
+    }
+    indiana_pacers = {
+        'sport': Sport.nba,
+        'id': 689
+    }
+    los_angeles_clippers = {
+        'sport': Sport.nba,
+        'id': None
+    }
+    los_angeles_lakers = {
+        'sport': Sport.nba,
+        'id': 691
+    }
+    memphis_grizzlies = {
+        'sport': Sport.nba,
+        'id': 692
+    }
+    miami_heat = {
+        'sport': Sport.nba,
+        'id': None
+    }
+    milwaukee_bucks = {
+        'sport': Sport.nba,
+        'id': 694
+    }
+    minnesota_timberwolves = {
+        'sport': Sport.nba,
+        'id': 695
+    }
+    new_orleans_pelicans = {
+        'sport': Sport.nba,
+        'id': 697
+    }
+    new_york_knicks = {
+        'sport': Sport.nba,
+        'id': None
+    }
+    oklahoma_city_thunder = {
+        'sport': Sport.nba,
+        'id': None
+    }
+    orlando_magic = {
+        'sport': Sport.nba,
+        'id': 700
+    }
+    philadelphia_76ers = {
+        'sport': Sport.nba,
+        'id': 701
+    }
+    phoenix_suns = {
+        'sport': Sport.nba,
+        'id': 702
+    }
+    portland_trail_blazers = {
+        'sport': Sport.nba,
+        'id': 703
+    }
+    sacramento_kings = {
+        'sport': Sport.nba,
+        'id': 704
+    }
+    san_antonio_spurs = {
+        'sport': Sport.nba,
+        'id': None
+    }
+    toronto_raptors = {
+        'sport': Sport.nba,
+        'id': 706
+    }
+    utah_jazz = {
+        'sport': Sport.nba,
+        'id': 707
+    }
+    washington_wizards = {
+        'sport': Sport.nba,
+        'id': None
+    }
 
 
 class Position(Enum):
