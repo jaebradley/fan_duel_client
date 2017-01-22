@@ -107,7 +107,7 @@ class FixtureDeserializer:
                        url=fixture_json[FixtureDeserializer.url_field_name],
                        status=FixtureStatusDeserializer.deserialize(fixture_status_json=fixture_json[FixtureDeserializer.status_field_name]),
                        start_time=FixtureDeserializer.deserialize_start_time(start_time=fixture_json[FixtureDeserializer.start_time_field_name]),
-                       players_url=fixture_json[FixtureDeserializer.players_field_name][FixtureDeserializer.players_field_name],
+                       players_url=fixture_json[FixtureDeserializer.players_field_name][FixtureDeserializer.players_url_field_name],
                        sport=Sport.value_of(name=fixture_json[FixtureDeserializer.sport_field_name]),
                        salary_cap=fixture_json[FixtureDeserializer.salary_cap_field_name])
 
