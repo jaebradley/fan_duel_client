@@ -189,6 +189,17 @@ class Team(Enum):
         'id': None
     }
 
+    @staticmethod
+    def value_of(sport, fan_duel_id):
+        assert isinstance(sport, Sport)
+        assert isinstance(fan_duel_id, int)
+
+        for team in Team:
+            if team.value['sport'] == sport and team.value['id'] == id:
+                return team
+
+        raise ValueError('Unable to identify team for sport: %s and id: %s', sport, fan_duel_id)
+
 
 class Position(Enum):
     point_guard = {
