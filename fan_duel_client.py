@@ -15,3 +15,10 @@ class FanDuelClient:
         response.raise_for_status()
 
         return ContestsDeserializer.deserialize(contests_json=response.json())
+
+    def get_fixtures(self):
+        response = requests.get(url=UrlBuilder.build_fixtures_url(), headers=self.headers)
+
+        response.raise_for_status()
+
+        return FixturesDeserializer.deserialize(fixtures_json=response.json())
