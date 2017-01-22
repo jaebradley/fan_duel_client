@@ -125,12 +125,22 @@ class Position(Enum):
 
 class FixtureStatus:
     def __init__(self, is_final, has_started):
+        assert isinstance(is_final, bool)
+        assert isinstance(has_started, bool)
+
         self.is_final = is_final
         self.has_started = has_started
 
 
 class Fixture:
     def __init__(self, fixture_id, sport, status, away_team, home_team, start_time):
+        assert isinstance(fixture_id, basestring)
+        assert isinstance(sport, Sport)
+        assert isinstance(status, FixtureStatus)
+        assert isinstance(away_team, Team)
+        assert isinstance(home_team, Team)
+        assert isinstance(start_time, datetime)
+
         self.fixture_id = fixture_id
         self.sport = sport
         self.status = status
@@ -150,23 +160,24 @@ class FixturePlayerInjury:
 
 
 class FixturePlayer:
-    def __init__(self, fixture_player_id, first_name, last_name, jersey, is_removed, position, salary, team, fixture):
+    def __init__(self, fixture_player_id, first_name, last_name, jersey, injury, is_removed, position, salary, team, fixture):
         assert isinstance(fixture_player_id, basestring)
         assert isinstance(first_name, basestring)
         assert isinstance(last_name, basestring)
         assert isinstance(jersey, int)
         assert isinstance(is_removed, bool)
+        assert isinstance(injury, FixturePlayerInjury)
         assert isinstance(position, Position)
-        assert isinstance(salary, int)
         assert isinstance(team, Team)
-        # assert isinstance(fixture, Fixture)
+        assert isinstance(fixture, Fixture)
+        assert isinstance(salary, int)
 
-        self.fixture_player_id = fixture_player_id,
+        self.fixture_player_id = fixture_player_id
         self.first_name = first_name
         self.last_name = last_name
         self.jersey = jersey
-        self.injury = self.injury
-        self.is_removed = is_removed,
+        self.injury = injury
+        self.is_removed = is_removed
         self.position = position
         self.salary = salary
         self.team = team
