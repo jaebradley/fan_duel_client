@@ -7,3 +7,4 @@ requests==2.10.0
 sh==1.11
 six==1.10.0
 python-dotenv==0.6.2
+pytz==2016.10
