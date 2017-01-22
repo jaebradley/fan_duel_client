@@ -5,9 +5,9 @@
 class Contest:
     def __init__(self, contest_id, max_entries_per_user, name, is_guaranteed, url, entry_fee):
         assert isinstance(max_entries_per_user, int)
-        assert isinstance(name, str)
+        assert isinstance(name, basestring)
         assert isinstance(is_guaranteed, bool)
-        assert isinstance(url, str)
+        assert isinstance(url, basestring)
         assert isinstance(entry_fee, int)
 
         self.contest_id = contest_id
