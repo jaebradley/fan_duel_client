@@ -1,7 +1,7 @@
 from pytz import utc
 from datetime import datetime
 
-from data.models import Contest, FixtureStatus, Fixture, Sport
+from data.models import Contest, FixtureListStatus, FixtureList, Sport
 
 
 class ContestsDeserializer:
@@ -58,8 +58,8 @@ class FixtureStatusDeserializer:
         assert FixtureStatusDeserializer.has_started_field_name in fixture_status_json
         assert FixtureStatusDeserializer.is_final_field_name in fixture_status_json
 
-        return FixtureStatus(has_started=fixture_status_json[FixtureStatusDeserializer.has_started_field_name],
-                             is_final=fixture_status_json[FixtureStatusDeserializer.is_final_field_name])
+        return FixtureListStatus(has_started=fixture_status_json[FixtureStatusDeserializer.has_started_field_name],
+                                 is_final=fixture_status_json[FixtureStatusDeserializer.is_final_field_name])
 
 
 class FixturesDeserializer:
@@ -103,13 +103,13 @@ class FixtureDeserializer:
         assert FixtureDeserializer.sport_field_name in fixture_json
         assert FixtureDeserializer.salary_cap_field_name in fixture_json
 
-        return Fixture(fixture_id=fixture_json[FixtureDeserializer.fixture_id_field_name],
-                       url=fixture_json[FixtureDeserializer.url_field_name],
-                       status=FixtureStatusDeserializer.deserialize(fixture_status_json=fixture_json[FixtureDeserializer.status_field_name]),
-                       start_time=FixtureDeserializer.deserialize_start_time(start_time=fixture_json[FixtureDeserializer.start_time_field_name]),
-                       players_url=fixture_json[FixtureDeserializer.players_field_name][FixtureDeserializer.players_url_field_name],
-                       sport=Sport.value_of(name=fixture_json[FixtureDeserializer.sport_field_name]),
-                       salary_cap=fixture_json[FixtureDeserializer.salary_cap_field_name])
+        return FixtureList(fixture_id=fixture_json[FixtureDeserializer.fixture_id_field_name],
+                           url=fixture_json[FixtureDeserializer.url_field_name],
+                           status=FixtureStatusDeserializer.deserialize(fixture_status_json=fixture_json[FixtureDeserializer.status_field_name]),
+                           start_time=FixtureDeserializer.deserialize_start_time(start_time=fixture_json[FixtureDeserializer.start_time_field_name]),
+                           players_url=fixture_json[FixtureDeserializer.players_field_name][FixtureDeserializer.players_url_field_name],
+                           sport=Sport.value_of(name=fixture_json[FixtureDeserializer.sport_field_name]),
+                           salary_cap=fixture_json[FixtureDeserializer.salary_cap_field_name])
 
     @staticmethod
     def deserialize_start_time(start_time):
