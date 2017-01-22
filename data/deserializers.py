@@ -41,4 +41,3 @@ class ContestDeserializer:
                        is_guaranteed=contest_json[ContestDeserializer.is_guaranteed_field_name],
                        url=contest_json[ContestDeserializer.url_field_name],
                        entry_fee=contest_json[ContestDeserializer.entry_fee_field_name])
-
