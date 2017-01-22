@@ -87,7 +87,7 @@ class FixtureDeserializer:
     salary_cap_field_name = 'salary_cap'
 
     start_time_timezone = utc
-    start_time_format = '%Y-%m-%dT%H:%M:SZ'
+    start_time_format = '%Y-%m-%dT%H:%M:%SZ'
 
     def __init__(self):
         pass
@@ -109,10 +109,11 @@ class FixtureDeserializer:
                        start_time=FixtureDeserializer.deserialize_start_time(start_time=fixture_json[FixtureDeserializer.start_time_field_name]),
                        players_url=fixture_json[FixtureDeserializer.players_url_field_name],
                        sport=Sport.value_of(name=fixture_json[FixtureDeserializer.sport_field_name]),
-                       salary_cap=fixture_json[FixtureDeserializer.sport_field_name])
+                       salary_cap=fixture_json[FixtureDeserializer.salary_cap_field_name])
 
     @staticmethod
     def deserialize_start_time(start_time):
-        return datetime.strptime(date_string=start_time,
-                                 format=FixtureDeserializer.start_time_format)\
-                       .astimezone(tz=FixtureDeserializer.start_time_timezone)
+        assert isinstance(start_time, basestring)
+
+        deserialized_start_time = datetime.strptime(start_time, FixtureDeserializer.start_time_format)
+        return utc.localize(deserialized_start_time)

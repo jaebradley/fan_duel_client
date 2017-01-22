@@ -13,8 +13,8 @@ class Sport(Enum):
     def value_of(name):
         assert isinstance(name, basestring)
 
-        for sport in Sport.enum_member:
-            if sport.value == name.upper():
+        for sport in Sport:
+            if sport.value == name.lower():
                 return sport
 
         raise ValueError('Unknown sport: %s', name)
