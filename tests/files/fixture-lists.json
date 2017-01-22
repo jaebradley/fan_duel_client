@@ -1,0 +1,273 @@
+{
+  "fixture_lists": [
+    {
+      "status": {
+        "started": false,
+        "final": false
+      },
+      "players": {
+        "_url": "https://api.fanduel.com/fixture-lists/17681/players"
+      },
+      "label": "Main",
+      "contests": {
+        "open": {
+          "count": 920,
+          "contest_types": [
+            {
+              "_members": [
+                "LEAGUE"
+              ],
+              "count": 356,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "FIFTY_FIFTY"
+              ],
+              "count": 99,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "TOURNAMENT"
+              ],
+              "count": 62,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "H2H"
+              ],
+              "count": 380,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "MULTIPLIER"
+              ],
+              "count": 23,
+              "_ref": "contest_types.id"
+            }
+          ],
+          "pinned_count": 64,
+          "_url": "https://api.fanduel.com/contests?fixture_list=17681&status=open"
+        }
+      },
+      "start_date": "2017-01-22T20:05:00Z",
+      "_url": "https://api.fanduel.com/fixture-lists/17681",
+      "sport": "NFL",
+      "id": "17681",
+      "salary_cap": 60000
+    },
+    {
+      "status": {
+        "started": false,
+        "final": false
+      },
+      "players": {
+        "_url": "https://api.fanduel.com/fixture-lists/17742/players"
+      },
+      "label": "Main",
+      "contests": {
+        "open": {
+          "count": 364,
+          "contest_types": [
+            {
+              "_members": [
+                "LEAGUE"
+              ],
+              "count": 210,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "FIFTY_FIFTY"
+              ],
+              "count": 73,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "TOURNAMENT"
+              ],
+              "count": 18,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "H2H"
+              ],
+              "count": 48,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "MULTIPLIER"
+              ],
+              "count": 15,
+              "_ref": "contest_types.id"
+            }
+          ],
+          "pinned_count": 18,
+          "_url": "https://api.fanduel.com/contests?fixture_list=17742&status=open"
+        }
+      },
+      "start_date": "2017-01-22T22:00:00Z",
+      "_url": "https://api.fanduel.com/fixture-lists/17742",
+      "sport": "NHL",
+      "id": "17742",
+      "salary_cap": 55000
+    },
+    {
+      "status": {
+        "started": false,
+        "final": false
+      },
+      "players": {
+        "_url": "https://api.fanduel.com/fixture-lists/17747/players"
+      },
+      "label": "Main",
+      "contests": {
+        "open": {
+          "count": 439,
+          "contest_types": [
+            {
+              "_members": [
+                "LEAGUE"
+              ],
+              "count": 220,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "FIFTY_FIFTY"
+              ],
+              "count": 98,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "TOURNAMENT"
+              ],
+              "count": 52,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "H2H"
+              ],
+              "count": 37,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "MULTIPLIER"
+              ],
+              "count": 32,
+              "_ref": "contest_types.id"
+            }
+          ],
+          "pinned_count": 59,
+          "_url": "https://api.fanduel.com/contests?fixture_list=17747&status=open"
+        }
+      },
+      "start_date": "2017-01-22T23:00:00Z",
+      "_url": "https://api.fanduel.com/fixture-lists/17747",
+      "sport": "NBA",
+      "id": "17747",
+      "salary_cap": 60000
+    },
+    {
+      "status": {
+        "started": false,
+        "final": false
+      },
+      "players": {
+        "_url": "https://api.fanduel.com/fixture-lists/17743/players"
+      },
+      "label": "Late",
+      "contests": {
+        "open": {
+          "count": 139,
+          "contest_types": [
+            {
+              "_members": [
+                "LEAGUE"
+              ],
+              "count": 94,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "FIFTY_FIFTY"
+              ],
+              "count": 31,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "TOURNAMENT"
+              ],
+              "count": 11,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "H2H"
+              ],
+              "count": 0,
+              "_ref": "contest_types.id"
+            },
+            {
+              "_members": [
+                "MULTIPLIER"
+              ],
+              "count": 3,
+              "_ref": "contest_types.id"
+            }
+          ],
+          "pinned_count": 10,
+          "_url": "https://api.fanduel.com/contests?fixture_list=17743&status=open"
+        }
+      },
+      "start_date": "2017-01-23T00:30:00Z",
+      "_url": "https://api.fanduel.com/fixture-lists/17743",
+      "sport": "NHL",
+      "id": "17743",
+      "salary_cap": 55000
+    }
+  ],
+  "contest_types": [
+    {
+      "description": "Multiple opponents and prize structures",
+      "id": "LEAGUE",
+      "label": "3-100 Player"
+    },
+    {
+      "description": "Finish in the top half to win",
+      "id": "FIFTY_FIFTY",
+      "label": "50/50"
+    },
+    {
+      "description": "Large contests with guaranteed prize pools",
+      "id": "TOURNAMENT",
+      "label": "Tournament"
+    },
+    {
+      "description": "Challenge one opponent of your choice",
+      "id": "H2H",
+      "label": "Head to Head"
+    },
+    {
+      "description": "Double your money or play for more",
+      "id": "MULTIPLIER",
+      "label": "Multiplier"
+    }
+  ],
+  "_meta": {
+    "fixture_lists": {
+      "count": 4
+    },
+    "_primary_document": "fixture_lists"
+  }
+}
