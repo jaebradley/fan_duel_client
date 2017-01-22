@@ -1,4 +1,4 @@
-from data.models import Contest
+from data.models import Contest, FixtureStatus, Fixture
 
 
 class ContestsDeserializer:
@@ -41,3 +41,19 @@ class ContestDeserializer:
                        is_guaranteed=contest_json[ContestDeserializer.is_guaranteed_field_name],
                        url=contest_json[ContestDeserializer.url_field_name],
                        entry_fee=contest_json[ContestDeserializer.entry_fee_field_name])
+
+
+class FixtureStatusDeserializer:
+    has_started_field_name = 'started'
+    is_final_field_name = 'final'
+
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def deserialize(fixture_status_json):
+        assert FixtureStatusDeserializer.has_started_field_name in fixture_status_json
+        assert FixtureStatusDeserializer.is_final_field_name in fixture_status_json
+
+        return FixtureStatus(has_started=fixture_status_json[FixtureStatusDeserializer.has_started_field_name],
+                             is_final=fixture_status_json[FixtureStatusDeserializer.is_final_field_name])
