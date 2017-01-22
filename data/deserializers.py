@@ -62,6 +62,20 @@ class FixtureStatusDeserializer:
                              is_final=fixture_status_json[FixtureStatusDeserializer.is_final_field_name])
 
 
+class FixturesDesrializer:
+    fixtures_field_name = 'fixture_lists'
+
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def deserialize(fixtures_json):
+        assert FixturesDesrializer.fixtures_field_name in fixtures_json
+
+        return [FixtureDeserializer.deserialize(fixture_json=fixture)
+                for fixture in fixtures_json[FixturesDesrializer.fixtures_field_name]]
+
+
 class FixtureDeserializer:
     fixture_id_field_name = 'id'
     url_field_name = '_url'
