@@ -1,5 +1,5 @@
 
-#TODO: @jbradley not all fields in Contest JSON are represented - add fields as needed
+# TODO: @jbradley not all fields in Contest JSON are represented - add fields as needed
 
 
 class Contest:
