@@ -195,7 +195,7 @@ class Team(Enum):
         assert isinstance(fan_duel_id, int)
 
         for team in Team:
-            if team.value['sport'] == sport and team.value['id'] == id:
+            if team.value['sport'] == sport and team.value['id'] == fan_duel_id:
                 return team
 
         raise ValueError('Unable to identify team for sport: %s and id: %s', sport, fan_duel_id)
@@ -222,6 +222,17 @@ class Position(Enum):
         'sport': Sport.nba,
         'abbreviation': 'C'
     }
+
+    @staticmethod
+    def value_of(sport, abbreviation):
+        assert isinstance(sport, Sport)
+        assert isinstance(abbreviation, basestring)
+
+        for position in Position:
+            if position.value['sport'] == sport and position.value[abbreviation] == abbreviation:
+                return position
+
+        raise ValueError('Unable to identify position for sport: %s and abbreviation: %s', sport, abbreviation)
 
 
 class FixtureStatus:

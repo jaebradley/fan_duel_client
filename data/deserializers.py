@@ -1,7 +1,8 @@
 from pytz import utc
 from datetime import datetime
 
-from data.models import Contest, FixtureListStatus, FixtureList, Sport
+from data.models import Contest, FixtureListStatus, FixtureList, Sport, Team, Fixture, FixturePlayer,\
+    FixturePlayerInjury, Position
 
 
 class ContestsDeserializer:
@@ -137,4 +138,47 @@ class FixturePlayerDeserializer:
     def __init__(self):
         pass
 
+    @staticmethod
+    def deserialize(fixture_player_json, fixtures_mapping):
+        assert FixturePlayerDeserializer.fixture_player_id_field_name in fixture_player_json
+        assert FixturePlayerDeserializer.first_name_field_name in fixture_player_json
+        assert FixturePlayerDeserializer.last_name_field_name in fixture_player_json
+        assert FixturePlayerDeserializer.jersey_number_field_name in fixture_player_json
+        assert FixturePlayerDeserializer.injury_details_field_name in fixture_player_json
+        assert FixturePlayerDeserializer.fixture_field_name in fixture_player_json
+        assert FixturePlayerDeserializer.fixture_members_field_name in fixture_player_json[FixturePlayerDeserializer.fixture_field_name]
+        assert FixturePlayerDeserializer.is_removed_field_name in fixture_player_json
+        assert FixturePlayerDeserializer.position_field_name in fixture_player_json
+        assert FixturePlayerDeserializer.salary_field_name in fixture_player_json
+        assert FixturePlayerDeserializer.team_field_name in fixture_player_json
+        assert FixturePlayerDeserializer.team_member_field_name in fixture_player_json[FixturePlayerDeserializer.team_field_name]
 
+        fixture_members = fixture_player_json[FixturePlayerDeserializer.fixture_field_name][FixturePlayerDeserializer.fixture_members_field_name]
+        assert isinstance(fixture_members, list)
+        assert len(fixture_members) == 1
+
+        fixture_id = int(fixture_members[0])
+        fixture = fixtures_mapping.get(fixture_id)
+        assert isinstance(fixture, Fixture)
+
+        team_members = fixture_player_json[FixturePlayerDeserializer.team_field_name][FixturePlayerDeserializer.team_member_field_name]
+        assert isinstance(team_members, list)
+        assert len(team_members) == 1
+
+        team_id = int(team_members[0])
+        team = Team.value_of(sport=fixture.sport, fan_duel_id=team_id)
+
+        injury = FixturePlayerInjury(status=fixture_player_json[FixturePlayerDeserializer.injury_status_field_name],
+                                     details=fixture_player_json[FixturePlayerDeserializer.injury_details_field_name])
+
+        return FixturePlayer(fixture_player_id=fixture_player_json[FixturePlayerDeserializer.fixture_player_id_field_name],
+                             first_name=fixture_player_json[FixturePlayerDeserializer.first_name_field_name],
+                             last_name=fixture_player_json[FixturePlayerDeserializer.last_name_field_name],
+                             jersey_number=fixture_player_json[FixturePlayerDeserializer.jersey_number_field_name],
+                             injury=injury,
+                             is_removed=fixture_player_json[FixturePlayerDeserializer.is_removed_field_name],
+                             position=Position.value_of(sport=fixture.sport,
+                                                        abbreviation=fixture_player_json[FixturePlayerDeserializer.position_field_name]),
+                             salary=fixture_player_json[FixturePlayerDeserializer.salary_field_name],
+                             team=team,
+                             fixture=fixture)
