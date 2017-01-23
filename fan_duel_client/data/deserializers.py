@@ -1,7 +1,8 @@
-from pytz import utc
 from datetime import datetime
 
-from data.models import Contest, FixtureListStatus, FixtureList, Sport, Team, Fixture, FixturePlayer,\
+from pytz import utc
+
+from fan_duel_client.data.models import Contest, FixtureListStatus, FixtureList, Sport, Team, Fixture, FixturePlayer,\
     FixturePlayerInjury, Position, FixtureStatus
 
 
