@@ -162,6 +162,7 @@ class FixtureDeserializer:
     status_field_name = 'status'
     away_team_field_name = 'away_team'
     home_team_field_name = 'home_team'
+    start_time_field_name = 'start_date'
 
     def __init__(self):
         pass
@@ -171,10 +172,20 @@ class FixtureDeserializer:
         assert FixtureDeserializer.fixture_id_field_name in fixture_json
         assert FixtureDeserializer.sport_field_name in fixture_json
         assert FixtureDeserializer.status_field_name in fixture_json
+        assert FixtureDeserializer.away_team_field_name in fixture_json
+        assert FixtureDeserializer.home_team_field_name in fixture_json
+        assert FixtureDeserializer.start_time_field_name in fixture_json
+
+        sport = Sport.value_of(name=fixture_json[FixtureDeserializer.sport_field_name])
+        away_team = FixtureTeamDeserializer.deserialize(team_json=fixture_json[FixtureDeserializer.away_team_field_name],
+                                                        sport=sport)
+        home_team = FixtureTeamDeserializer.deserialize(team_json=fixture_json[FixtureDeserializer.home_team_field_name],
+                                                        sport=sport)
+        status = FixtureStatusDeserializer.deserialize(fixture_status_json=fixture_json[FixtureDeserializer.status_field_name])
+        start_time = deserialize_start_time(start_time=fixture_json[FixtureDeserializer.start_time_field_name])
 
         return Fixture(fixture_id=fixture_json[FixtureDeserializer.fixture_id_field_name],
-                       sport=fixture_json[FixtureDeserializer.sport_field_name],
-                       status=FixtureStatusDeserializer.deserialize(fixture_status_json=fixture_json[FixtureDeserializer.status_field_name]))
+                       status=status, sport=sport, away_team=away_team, home_team=home_team, start_time=start_time)
 
 
 class FixturePlayerDeserializer:
