@@ -2,7 +2,14 @@ from pytz import utc
 from datetime import datetime
 
 from data.models import Contest, FixtureListStatus, FixtureList, Sport, Team, Fixture, FixturePlayer,\
-    FixturePlayerInjury, Position
+    FixturePlayerInjury, Position, FixtureStatus
+
+
+def deserialize_start_time(start_time):
+    assert isinstance(start_time, basestring)
+
+    deserialized_start_time = datetime.strptime(start_time, FixtureListDeserializer.start_time_format)
+    return utc.localize(deserialized_start_time)
 
 
 class ContestsDeserializer:
@@ -47,7 +54,7 @@ class ContestDeserializer:
                        entry_fee=contest_json[ContestDeserializer.entry_fee_field_name])
 
 
-class FixtureStatusDeserializer:
+class FixtureListStatusDeserializer:
     has_started_field_name = 'started'
     is_final_field_name = 'final'
 
@@ -55,12 +62,12 @@ class FixtureStatusDeserializer:
         pass
 
     @staticmethod
-    def deserialize(fixture_status_json):
-        assert FixtureStatusDeserializer.has_started_field_name in fixture_status_json
-        assert FixtureStatusDeserializer.is_final_field_name in fixture_status_json
+    def deserialize(fixture_list_status_json):
+        assert FixtureListStatusDeserializer.has_started_field_name in fixture_list_status_json
+        assert FixtureListStatusDeserializer.is_final_field_name in fixture_list_status_json
 
-        return FixtureListStatus(has_started=fixture_status_json[FixtureStatusDeserializer.has_started_field_name],
-                                 is_final=fixture_status_json[FixtureStatusDeserializer.is_final_field_name])
+        return FixtureListStatus(has_started=fixture_list_status_json[FixtureListStatusDeserializer.has_started_field_name],
+                                 is_final=fixture_list_status_json[FixtureListStatusDeserializer.is_final_field_name])
 
 
 class FixtureListsDeserializer:
@@ -106,18 +113,68 @@ class FixtureListDeserializer:
 
         return FixtureList(fixture_id=fixture_list_json[FixtureListDeserializer.fixture_id_field_name],
                            url=fixture_list_json[FixtureListDeserializer.url_field_name],
-                           status=FixtureStatusDeserializer.deserialize(fixture_status_json=fixture_list_json[FixtureListDeserializer.status_field_name]),
-                           start_time=FixtureListDeserializer.deserialize_start_time(start_time=fixture_list_json[FixtureListDeserializer.start_time_field_name]),
+                           status=FixtureListStatusDeserializer.deserialize(fixture_list_status_json=fixture_list_json[FixtureListDeserializer.status_field_name]),
+                           start_time=deserialize_start_time(start_time=fixture_list_json[FixtureListDeserializer.start_time_field_name]),
                            players_url=fixture_list_json[FixtureListDeserializer.players_field_name][FixtureListDeserializer.players_url_field_name],
                            sport=Sport.value_of(name=fixture_list_json[FixtureListDeserializer.sport_field_name]),
                            salary_cap=fixture_list_json[FixtureListDeserializer.salary_cap_field_name])
 
-    @staticmethod
-    def deserialize_start_time(start_time):
-        assert isinstance(start_time, basestring)
 
-        deserialized_start_time = datetime.strptime(start_time, FixtureListDeserializer.start_time_format)
-        return utc.localize(deserialized_start_time)
+class FixtureStatusDeserializer:
+    has_started_field_name = 'started'
+    is_final_field_name = 'final'
+
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def deserialize(fixture_status_json):
+        assert FixtureStatusDeserializer.has_started_field_name in fixture_status_json
+        assert FixtureStatusDeserializer.is_final_field_name in fixture_status_json
+
+        return FixtureStatus(has_started=fixture_status_json[FixtureStatusDeserializer.has_started_field_name],
+                             is_final=fixture_status_json[FixtureStatusDeserializer.is_final_field_name])
+
+
+class FixtureTeamDeserializer:
+    team_field_name = 'team'
+    members_field_name = '_members'
+
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def deserialize(team_json, sport):
+        assert FixtureTeamDeserializer.team_field_name in team_json
+        assert FixtureTeamDeserializer.members_field_name in team_json[FixtureTeamDeserializer.team_field_name]
+        assert isinstance(sport, Sport)
+
+        team_members = team_json[FixtureTeamDeserializer.team_field_name][FixtureTeamDeserializer.members_field_name]
+        assert isinstance(team_members, list)
+        assert len(team_members) == 1
+
+        return Team.value_of(sport=sport, fan_duel_id=int(team_members[0]))
+
+
+class FixtureDeserializer:
+    fixture_id_field_name = 'id'
+    sport_field_name = 'sport'
+    status_field_name = 'status'
+    away_team_field_name = 'away_team'
+    home_team_field_name = 'home_team'
+
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def deserialize(fixture_json):
+        assert FixtureDeserializer.fixture_id_field_name in fixture_json
+        assert FixtureDeserializer.sport_field_name in fixture_json
+        assert FixtureDeserializer.status_field_name in fixture_json
+
+        return Fixture(fixture_id=fixture_json[FixtureDeserializer.fixture_id_field_name],
+                       sport=fixture_json[FixtureDeserializer.sport_field_name],
+                       status=FixtureStatusDeserializer.deserialize(fixture_status_json=fixture_json[FixtureDeserializer.status_field_name]))
 
 
 class FixturePlayerDeserializer:
