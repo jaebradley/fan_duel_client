@@ -1,6 +1,6 @@
 import requests
 
-from data.deserializers import ContestsDeserializer, FixtureListsDeserializer
+from data.deserializers import ContestsDeserializer, FixtureListsDeserializer, FixturePlayersDeserializer
 from utilities.builders import UrlBuilder, HeadersBuilder
 
 
@@ -16,9 +16,17 @@ class FanDuelClient:
 
         return ContestsDeserializer.deserialize(contests_json=response.json())
 
-    def get_fixtures(self):
+    def get_fixture_lists(self):
         response = requests.get(url=UrlBuilder.build_fixture_lists_url(), headers=self.headers)
 
         response.raise_for_status()
 
         return FixtureListsDeserializer.deserialize(fixture_lists_json=response.json())
+
+    def get_fixture_players(self, fixture_list_id):
+        response = requests.get(url=UrlBuilder.build_fixture_list_players_url(fixture_list_id=fixture_list_id),
+                                headers=self.headers)
+
+        response.raise_for_status()
+        
+        return FixturePlayersDeserializer.deserialize(fixture_players_json=response.json())

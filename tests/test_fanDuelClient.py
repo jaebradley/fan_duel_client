@@ -14,7 +14,7 @@ class TestFanDuelClient(TestCase):
             print contest.__dict__
 
     def test_get_fixtures(self):
-        for fixture in self.client.get_fixtures():
+        for fixture in self.client.get_fixture_lists():
             print fixture.__dict__
 
 
