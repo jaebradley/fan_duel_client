@@ -28,5 +28,5 @@ class FanDuelClient:
                                 headers=self.headers)
 
         response.raise_for_status()
-        
+
         return FixturePlayersDeserializer.deserialize(fixture_players_json=response.json())

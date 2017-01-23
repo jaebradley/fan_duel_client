@@ -13,8 +13,10 @@ class TestFanDuelClient(TestCase):
         for contest in self.client.get_contests():
             print contest.__dict__
 
-    def test_get_fixtures(self):
+    def test_get_fixture_lists(self):
         for fixture in self.client.get_fixture_lists():
             print fixture.__dict__
 
-
+    def test_get_fixture_players(self):
+        fixture_list_id = 17722
+        print self.client.get_fixture_players(fixture_list_id=fixture_list_id)
