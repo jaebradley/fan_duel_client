@@ -74,7 +74,7 @@ class Team(Enum):
     }
     boston_celtics = {
         'sport': Sport.nba,
-        'id': None
+        'id': 680
     }
     brooklyn_nets = {
         'sport': Sport.nba,
@@ -90,7 +90,7 @@ class Team(Enum):
     }
     cleveland_cavaliers = {
         'sport': Sport.nba,
-        'id': None
+        'id': 683
     }
     dallas_mavericks = {
         'sport': Sport.nba,
@@ -102,7 +102,7 @@ class Team(Enum):
     }
     detroit_pistons = {
         'sport': Sport.nba,
-        'id': None
+        'id': 686
     }
     golden_state_warriors = {
         'sport': Sport.nba,
@@ -118,7 +118,7 @@ class Team(Enum):
     }
     los_angeles_clippers = {
         'sport': Sport.nba,
-        'id': None
+        'id': 690
     }
     los_angeles_lakers = {
         'sport': Sport.nba,
@@ -130,7 +130,7 @@ class Team(Enum):
     }
     miami_heat = {
         'sport': Sport.nba,
-        'id': None
+        'id': 693
     }
     milwaukee_bucks = {
         'sport': Sport.nba,
@@ -146,11 +146,11 @@ class Team(Enum):
     }
     new_york_knicks = {
         'sport': Sport.nba,
-        'id': None
+        'id': 698
     }
     oklahoma_city_thunder = {
         'sport': Sport.nba,
-        'id': None
+        'id': 699
     }
     orlando_magic = {
         'sport': Sport.nba,
@@ -174,7 +174,7 @@ class Team(Enum):
     }
     san_antonio_spurs = {
         'sport': Sport.nba,
-        'id': None
+        'id': 705
     }
     toronto_raptors = {
         'sport': Sport.nba,
@@ -186,7 +186,7 @@ class Team(Enum):
     }
     washington_wizards = {
         'sport': Sport.nba,
-        'id': None
+        'id': 708
     }
 
     @staticmethod
