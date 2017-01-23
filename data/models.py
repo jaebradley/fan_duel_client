@@ -261,11 +261,11 @@ class FixturePlayerInjury:
 
 
 class FixturePlayer:
-    def __init__(self, fixture_player_id, first_name, last_name, jersey, injury, is_removed, position, salary, team, fixture):
+    def __init__(self, fixture_player_id, first_name, last_name, jersey_number, injury, is_removed, position, salary, team, fixture):
         assert isinstance(fixture_player_id, basestring)
         assert isinstance(first_name, basestring)
         assert isinstance(last_name, basestring)
-        assert isinstance(jersey, int)
+        assert isinstance(jersey_number, int)
         assert isinstance(is_removed, bool)
         assert isinstance(injury, FixturePlayerInjury)
         assert isinstance(position, Position)
@@ -276,7 +276,7 @@ class FixturePlayer:
         self.fixture_player_id = fixture_player_id
         self.first_name = first_name
         self.last_name = last_name
-        self.jersey = jersey
+        self.jersey_number = jersey_number
         self.injury = injury
         self.is_removed = is_removed
         self.position = position
