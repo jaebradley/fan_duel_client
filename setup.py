@@ -3,7 +3,7 @@ setup(
   name='fan-duel-client',
   packages=find_packages(exclude=['tests*']),
   install_requires=['requests', 'enum34', 'pytz'],
-  version='0.1',
+  version='0.2',
   description='A FanDuel client',
   author='Jae Bradley',
   author_email='jae.b.bradley@gmail.com',
