@@ -204,23 +204,28 @@ class Team(Enum):
 class Position(Enum):
     point_guard = {
         'sport': Sport.nba,
-        'abbreviation': 'PG'
+        'abbreviation': 'PG',
+        'name': 'Point Guard'
     }
     shooting_guard = {
         'sport': Sport.nba,
-        'abbreviation': 'SG'
+        'abbreviation': 'SG',
+        'name': 'Shooting Guard'
     }
     small_forward = {
         'sport': Sport.nba,
-        'abbreviation': 'SF'
+        'abbreviation': 'SF',
+        'name': 'Small Forward'
     }
     power_forward = {
         'sport': Sport.nba,
-        'abbreviation': 'PF'
+        'abbreviation': 'PF',
+        'name': 'Power Forward'
     }
     center = {
         'sport': Sport.nba,
-        'abbreviation': 'C'
+        'abbreviation': 'C',
+        'name': 'Center'
     }
 
     @staticmethod
