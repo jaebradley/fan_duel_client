@@ -19,4 +19,5 @@ class TestFanDuelClient(TestCase):
 
     def test_get_fixture_players(self):
         fixture_list_id = 17722
-        print self.client.get_fixture_players(fixture_list_id=fixture_list_id)
+        for fixture_player in self.client.get_fixture_players(fixture_list_id=fixture_list_id):
+            print fixture_player.__dict__

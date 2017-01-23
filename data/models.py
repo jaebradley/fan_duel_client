@@ -217,7 +217,7 @@ class Position(Enum):
     power_forward = {
         'sport': Sport.nba,
         'abbreviation': 'PF'
-    },
+    }
     center = {
         'sport': Sport.nba,
         'abbreviation': 'C'
@@ -229,7 +229,7 @@ class Position(Enum):
         assert isinstance(abbreviation, basestring)
 
         for position in Position:
-            if position.value['sport'] == sport and position.value[abbreviation] == abbreviation:
+            if position.value['sport'] == sport and position.value['abbreviation'] == abbreviation:
                 return position
 
         raise ValueError('Unable to identify position for sport: %s and abbreviation: %s', sport, abbreviation)
@@ -264,8 +264,8 @@ class Fixture:
 
 class FixturePlayerInjury:
     def __init__(self, details, status):
-        assert isinstance(details, basestring)
-        assert isinstance(status, basestring)
+        assert isinstance(details, (type(None), basestring))
+        assert isinstance(status, (type(None), basestring))
 
         self.details = details
         self.status = status
