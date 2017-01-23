@@ -118,3 +118,23 @@ class FixtureListDeserializer:
         deserialized_start_time = datetime.strptime(start_time, FixtureListDeserializer.start_time_format)
         return utc.localize(deserialized_start_time)
 
+
+class FixturePlayerDeserializer:
+    fixture_player_id_field_name = 'id'
+    first_name_field_name = 'first_name'
+    last_name_field_name = 'last_name'
+    jersey_number_field_name = 'jersey_number'
+    injury_details_field_name = 'injury_details'
+    injury_status_field_name = 'injury_status'
+    fixture_field_name = 'fixture'
+    fixture_members_field_name = '_members'
+    is_removed_field_name = 'removed'
+    position_field_name = 'position'
+    salary_field_name = 'salary'
+    team_field_name = 'team'
+    team_member_field_name = '_members'
+
+    def __init__(self):
+        pass
+
+
