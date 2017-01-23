@@ -184,8 +184,35 @@ class FixtureDeserializer:
         status = FixtureStatusDeserializer.deserialize(fixture_status_json=fixture_json[FixtureDeserializer.status_field_name])
         start_time = deserialize_start_time(start_time=fixture_json[FixtureDeserializer.start_time_field_name])
 
-        return Fixture(fixture_id=fixture_json[FixtureDeserializer.fixture_id_field_name],
+        return Fixture(fixture_id=int(fixture_json[FixtureDeserializer.fixture_id_field_name]),
                        status=status, sport=sport, away_team=away_team, home_team=home_team, start_time=start_time)
+
+
+class FixturePlayersDeserializer:
+    fixtures_field_name = 'fixtures'
+    players_field_name = 'players'
+
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def deserialize(fixture_players_json):
+        assert FixturePlayersDeserializer.fixtures_field_name in fixture_players_json
+        assert FixturePlayersDeserializer.players_field_name in fixture_players_json
+
+        raw_fixtures = fixture_players_json[FixturePlayersDeserializer.fixtures_field_name]
+        assert isinstance(raw_fixtures, list)
+
+        raw_players = fixture_players_json[FixturePlayersDeserializer.players_field_name]
+        assert isinstance(raw_players, list)
+
+        fixture_mapping = {}
+        for raw_fixture in raw_fixtures:
+            fixture = FixtureDeserializer.deserialize(fixture_json=raw_fixture)
+            fixture_mapping[fixture.fixture_id] = fixture
+
+        return [FixturePlayerDeserializer.deserialize(fixture_player_json=fixture_player, fixtures_mapping=fixture_mapping)
+                for fixture_player in raw_players]
 
 
 class FixturePlayerDeserializer:

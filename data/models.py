@@ -246,7 +246,7 @@ class FixtureStatus:
 
 class Fixture:
     def __init__(self, fixture_id, sport, status, away_team, home_team, start_time):
-        assert isinstance(fixture_id, basestring)
+        assert isinstance(fixture_id, int)
         assert isinstance(sport, Sport)
         assert isinstance(status, FixtureStatus)
         assert isinstance(away_team, Team)
