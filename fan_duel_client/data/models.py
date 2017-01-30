@@ -9,6 +9,7 @@ class Sport(Enum):
     nhl = 'nhl'
     nfl = 'nfl'
     pga = 'pga'
+    epl = 'epl'
 
     @staticmethod
     def value_of(name):
